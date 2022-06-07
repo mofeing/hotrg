@@ -32,9 +32,10 @@ def hosvd(a: ArrayLike) -> tuple[ArrayLike, Sequence[ArrayLike]]:
         shape[0] = len(s)
 
         # unfold Ak for next iteration
-        Ak = np.atleast_2d(s).T * u
+        Ak = np.atleast_2d(s).T * vh
         Ak = np.reshape(Ak, shape)
 
         U.append(vh.T)
 
+    Ak = Ak.transpose()
     return (Ak, U)
