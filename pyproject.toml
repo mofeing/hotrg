@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ten"
+version = "0.1"
+dependencies = [
+	"numpy>=1.20",
+]
+
+[tool.setuptools]
+packages = ["ten"]
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line_length = 100
