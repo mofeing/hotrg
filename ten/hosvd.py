@@ -17,9 +17,8 @@ def hosvd(a: ArrayLike) -> tuple[ArrayLike, Sequence[ArrayLike]]:
     - U. Sequence[ArrayLike]
     """
 
-    U = []
+    Us = []
     Ak = a
-    shape = a.shape
 
     for k in range(a.ndim):
         # fold Ak
@@ -35,7 +34,7 @@ def hosvd(a: ArrayLike) -> tuple[ArrayLike, Sequence[ArrayLike]]:
         Ak = np.atleast_2d(s).T * vh
         Ak = np.reshape(Ak, shape)
 
-        U.append(vh.T)
+        Us.append(u)
 
     Ak = Ak.transpose()
-    return (Ak, U)
+    return (Ak, Us)
