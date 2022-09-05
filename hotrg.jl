@@ -67,8 +67,8 @@ end
 
 ###
 temperature = 2.0
-repeats = 2
-χ = 16
+repeats = 10
+χ = 10
 
 function one_iteration(H, T, χ)
     # contract with environment
@@ -113,4 +113,16 @@ function benchmark(temperature, repeats, χ)
     end
 end
 
-@profview benchmark(2.0, 2, 12)
+@timev benchmark(2.0, 1, 8)
+
+@timev benchmark(2.0, 10, 8)
+
+@profview benchmark(2.0, 10, 8)
+
+@timev benchmark(2.0, 5, 12)
+
+@profview benchmark(2.0, 5, 12)
+
+@timev benchmark(2.0, 5, 14)
+
+@profview benchmark(2.0, 2, 14)

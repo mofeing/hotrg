@@ -47,13 +47,14 @@ def hosvd_sides(a: ArrayLike) -> tuple[ArrayLike, ArrayLike, ArrayLike]:
     a = a.reshape([a.shape[0], -1])
     Ul, S, Vh = np.linalg.svd(a, full_matrices=False)
 
-    a = S * Vh
+    a = np.atleast_2d(S).T * Vh
     a.shape = shape
 
     # right SVD
     a = a.transpose((1, 0, 2, 3))
     a = a.reshape([a.shape[0], -1])
     Ur, S, Vh = np.linalg.svd(a, full_matrices=False)
-    S = (S * Vh).reshape(shape)
+    S = np.atleast_2d(S).T * Vh
+    S.shape = shape
 
     return S, Ul, Ur
